@@ -7,21 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property string $city
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * @property Address $addresses
+ * @property Doctor $doctors
  * @property Search $searches
  */
-class City extends Model
+class Clinical extends Model
 {
-    protected $fillable = ['city'];
+    protected $fillable = ['name', 'speech', 'address_id'];
 
-    public $timestamps = false;
+    protected $table = 'clinics';
 
-    public function addresses()
+    public function doctors()
     {
-        return $this->hasMany(Address::class);
+        return $this->belongsToMany(Doctor::class,'clinical_doctor','doctor_id','clinical_id');
     }
 
     public function searches()

@@ -77,5 +77,4 @@ Route::get('/', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-//todo:: localize arabic
 
